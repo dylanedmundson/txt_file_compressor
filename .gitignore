@@ -2,7 +2,6 @@
 
 # Other files and folders
 .settings/
-
 # Executables
 *.exe
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
