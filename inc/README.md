@@ -1,1 +1,0 @@
-This directory "inc/" holds all the include files for this project

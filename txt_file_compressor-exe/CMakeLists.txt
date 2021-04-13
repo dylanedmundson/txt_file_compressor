@@ -1,0 +1,3 @@
+add_executable(txt_file_compressor main.c)
+
+target_link_libraries(txt_file_compressor PRIVATE datastructures)

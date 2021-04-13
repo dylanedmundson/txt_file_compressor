@@ -1,0 +1,6 @@
+# ninja log v5
+2	198	1618340911	src/CMakeFiles/datastructures.dir/datastructures/priorityQueue.c.o	971bb70f6a504f33
+0	214	1618340911	src/CMakeFiles/datastructures.dir/datastructures/compressHoff.c.o	e772ffd2a8c26dd9
+3	275	1618340911	txt_file_compressor-exe/CMakeFiles/txt_file_compressor.dir/main.c.o	43dd7dfe28d72f20
+215	298	1618340911	src/libdatastructures.a	28ddc66000387232
+298	421	1618340911	txt_file_compressor-exe/txt_file_compressor	1d16c139d78d80c

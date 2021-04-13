@@ -1,0 +1,19 @@
+[
+{
+  "directory": "/home/dylanedmundson63/vsCode/txt_file_compressor/build",
+  "command": "/usr/bin/aarch64-linux-gnu-gcc-8  -I../src  -g   -o src/CMakeFiles/datastructures.dir/datastructures/compressHoff.c.o   -c /home/dylanedmundson63/vsCode/txt_file_compressor/src/datastructures/compressHoff.c",
+  "file": "/home/dylanedmundson63/vsCode/txt_file_compressor/src/datastructures/compressHoff.c"
+},
+
+{
+  "directory": "/home/dylanedmundson63/vsCode/txt_file_compressor/build",
+  "command": "/usr/bin/aarch64-linux-gnu-gcc-8  -I../src  -g   -o src/CMakeFiles/datastructures.dir/datastructures/priorityQueue.c.o   -c /home/dylanedmundson63/vsCode/txt_file_compressor/src/datastructures/priorityQueue.c",
+  "file": "/home/dylanedmundson63/vsCode/txt_file_compressor/src/datastructures/priorityQueue.c"
+},
+
+{
+  "directory": "/home/dylanedmundson63/vsCode/txt_file_compressor/build",
+  "command": "/usr/bin/aarch64-linux-gnu-gcc-8  -I../src  -g   -o txt_file_compressor-exe/CMakeFiles/txt_file_compressor.dir/main.c.o   -c /home/dylanedmundson63/vsCode/txt_file_compressor/txt_file_compressor-exe/main.c",
+  "file": "/home/dylanedmundson63/vsCode/txt_file_compressor/txt_file_compressor-exe/main.c"
+}
+]

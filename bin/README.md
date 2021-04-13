@@ -1,1 +1,0 @@
-This directory "bin" holds all the binary files such as .o and .exe files
