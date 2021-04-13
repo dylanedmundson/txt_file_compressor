@@ -1,4 +1,6 @@
 #include "datastructures/compressHoff.h"
+#include <time.h>
+#include <ctype.h>
 enum boolean {false, true};
 typedef enum boolean boolean;
 const int low = 10;
