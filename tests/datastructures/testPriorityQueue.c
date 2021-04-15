@@ -1,11 +1,8 @@
 /* by return 0 test passes, by returning -1 test fails */
 #include "datastructures/compressHoff.h"
+#include "testUtils.h"
 #include <time.h>
 #include <ctype.h>
-enum TEST_PASS {PASS, FAIL};
-typedef enum TEST_PASS testPass;
-enum boolean {false, true};
-typedef enum boolean boolean;
 const int low = 10;
 const int high = 100;
 
@@ -16,7 +13,7 @@ int getRand() {
 void sortArr(int *arr, int size) {
     for (int i = 0; i < size; i++) {
         for (int j = i + 1; j < size; j++) {
-            if (arr[j] > arr[i]) {
+            if (arr[j] < arr[i]) {
                 int temp = arr[i];
                 arr[i] = arr[j];
                 arr[j] = temp;
@@ -58,25 +55,23 @@ boolean testAddSize(int size) {
         priQAdd(pq, inittNode('a', arr[i]));
     }
     sortArr(arr, size);
-    if (assertEquals(pq->size, size) == false) {
-        printf("actual size: %d, expected size: %d | ", pq->size, size);
-        return false;
+    if (assertEquals(pq->size, size) == F) {
+        return F;
     }
     mNode *next = pq->head;
     for (int i = 0; i < size; i++) {
-        if (assertEquals(arr[i], next->data->freq) == false) {
-            printf("size %d at index %d | ", size, i);
+        if (assertEquals(arr[i], next->data->freq) == F) {
             free(next);
             free(arr);
             free(pq);
-            return false;
+            return F;
         }
         next = next->next;
     }
     free(next);
     free(arr);
     free(pq);
-    return true;
+    return T;
 }
 testPass testAdd() {
     /* add to empty queue */
@@ -95,7 +90,7 @@ testPass testAdd() {
     /* check 1 (base)*/
     mNode *next = pq->head;
     for (int i = 0; i < 5; i++) {
-        if (assertEquals(arr[i], next->data->freq) == false) {
+        if (assertEquals(arr[i], next->data->freq) == F) {
             return FAIL;
         }
         next = next->next;
@@ -104,8 +99,8 @@ testPass testAdd() {
     free(next);
 
     /* check 2 (varying sizes) */
-    if (testAddSize(50) == false || testAddSize(100) == false ||
-    testAddSize(1000) == false) {
+    if (testAddSize(50) == F || testAddSize(100) == F ||
+    testAddSize(1000) == F) {
         return FAIL;
     }
 
@@ -124,15 +119,15 @@ boolean testPopSize(int size) {
         if (!assertEquals(arr[i], pop(pq)->freq)) {
             free(arr);
             free(pq);
-            return false;
+            return F;
         }
     }
     if (!assertEquals(pq->size, 0) || pq->head != NULL) {
-        return false;
+        return F;
     }
     free(arr);
     free(pq);
-    return true;
+    return T;
 }
 
 testPass testPop() {
@@ -174,12 +169,8 @@ testPass testContains() {
 int main() {
     time_t t;
     srand((unsigned)time(&t));
-    if (
-        testinit() == FAIL || testAdd() == FAIL || 
-        testPop() == FAIL || testContains() == FAIL
-    ) {
-        return 1;
-    } else {
-        return 0;
-    }
+    ASSERT_PASS_TEST(testinit())
+    ASSERT_PASS_TEST(testAdd())
+    ASSERT_PASS_TEST(testPop())
+    ASSERT_PASS_TEST(testContains())
 }

@@ -1,1 +1,0 @@
-This directory "res/" holds all the projects resources (text files for input)

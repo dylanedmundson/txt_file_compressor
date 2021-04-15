@@ -8,3 +8,4 @@ add_test(
 add_test(NAME testCompressHoff COMMAND testCompressHoff)
 
 target_link_libraries(testPriorityQueue PUBLIC datastructures)
+target_link_libraries(testCompressHoff PUBLIC datastructures)

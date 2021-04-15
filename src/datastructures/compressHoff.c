@@ -153,48 +153,39 @@ mPriorityQueue *buildFreqList(FILE *read) {
 }
 
 
-// tNode *buildTree(mPriorityQueue *pq) {
-//     tNode **heads = (tNode **) malloc(sizeof(tNode) * pq->size), *next;
-//     int i = 0;
-//     heads[i] = inittNode('\0', -1);
-//     while ((next = pop(pq)) != NULL)
-//     {
-//         if (heads[i]->freq == -1) {
-//             if (heads[i]->left == NULL) {
-//                 heads[i]->left = next;
-//             } else if (heads[i]->right == NULL) {
-//                 heads[i]->right = next;
-//                 heads[i]->freq = heads[i]->left->freq + heads[i]->right->freq;
-//             }
-//         } else if (next->freq < heads[i]->freq) {
-//             i++;
-//             heads[i] = inittNode('\0', -1);
-//         } else {
-//             tNode *temp = heads[i];
-//             heads[i] = inittNode('\0', next->freq + heads[i]->freq);
-//             heads[i]->left = next;
-//             heads[i]->right = temp;
-//         }
-//     }
-//     for (int j = i; j > i; j++) {
-//         tNode *temp = heads[j -1];
-//         heads[j - 1] = inittNode('\0', heads[j - 1]->freq + heads[j]->freq);
-//         heads[j - 1]->left = temp;
-//         heads[j - 1]->right = heads[j];
-//     }
-//     next = NULL;
-//     free(next);
-//     tNode *head = heads[0];
-//     heads = NULL;
-//     free(heads);
-//     return head;
-// }
-
-// void printTree(tNode *head) {
-//     if (head != NULL) {
-//         printf("|%c|", head->c);
-//     } else {
-//         printTree(head->left);
-//         printTree(head->right);
-//     }
-// }
+tNode *buildTree(mPriorityQueue *pq) {
+    tNode **heads = (tNode **) malloc(sizeof(tNode) * pq->size), *next;
+    int i = 0;
+    heads[i] = inittNode('\0', -1);
+    while ((next = pop(pq)) != NULL)
+    {
+        if (heads[i]->freq == -1) {
+            if (heads[i]->left == NULL) {
+                heads[i]->left = next;
+            } else if (heads[i]->right == NULL) {
+                heads[i]->right = next;
+                heads[i]->freq = heads[i]->left->freq + heads[i]->right->freq;
+            }
+        } else if (next->freq < heads[i]->freq) {
+            i++;
+            heads[i] = inittNode('\0', -1);
+        } else {
+            tNode *temp = heads[i];
+            heads[i] = inittNode('\0', next->freq + heads[i]->freq);
+            heads[i]->left = next;
+            heads[i]->right = temp;
+        }
+    }
+    for (int j = i; j > i; j++) {
+        tNode *temp = heads[j -1];
+        heads[j - 1] = inittNode('\0', heads[j - 1]->freq + heads[j]->freq);
+        heads[j - 1]->left = temp;
+        heads[j - 1]->right = heads[j];
+    }
+    next = NULL;
+    free(next);
+    tNode *head = heads[0];
+    heads = NULL;
+    free(heads);
+    return head;
+}

@@ -11,12 +11,12 @@ void priQAdd(mPriorityQueue *pq, tNode *tnode) {
     mNode *nnode = initmNode(tnode);
     if (pq->head == NULL) {
         pq->head = nnode;
-    } else if (nnode->data->freq > pq->head->data->freq) {
+    } else if (nnode->data->freq < pq->head->data->freq) {
         nnode->next = pq->head;
         pq->head = nnode;
     } else {
         mNode *next = pq->head;
-        while (next->next != NULL && nnode->data->freq <= next->next->data->freq) {
+        while (next->next != NULL && nnode->data->freq >= next->next->data->freq) {
             next = next->next;
         }
         nnode->next = next->next;
